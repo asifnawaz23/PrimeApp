@@ -1,0 +1,67 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Inquiry {
+  id          String   @id @default(cuid())
+  date        DateTime @default(now())
+  name        String
+  email       String
+  phone       String
+  company     String?
+  country     String?
+  service     String
+  budget      String
+  description String
+  status      String   @default("New") // "New", "Contacted", "In Discussion", "Closed", "Spam"
+  assignedTo  String?
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  icon        String   // Lucide icon name, e.g., "Code", "Database", "Globe"
+  description String
+  order       Int      @default(0)
+}
+
+model Portfolio {
+  id        String   @id @default(cuid())
+  title     String
+  tags      String   // Comma-separated tags (e.g., "Next.js, Tailwind, R3F")
+  tech      String   // Comma-separated tech list
+  link      String?
+  image     String   // Image URL or local asset path
+  featured  Boolean  @default(false)
+}
+
+model BlogPost {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String   @unique
+  summary   String
+  content   String   // Markdown content
+  date      DateTime @default(now())
+  published Boolean  @default(false)
+}
+
+model Faq {
+  id       String @id @default(cuid())
+  question String
+  answer   String
+  order    Int    @default(0)
+}
+
+model Testimonial {
+  id        String @id @default(cuid())
+  name      String
+  role      String
+  company   String
+  content   String
+  avatar    String // Image URL or local asset path
+}
