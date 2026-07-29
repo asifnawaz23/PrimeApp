@@ -387,6 +387,6 @@ Use a reverse proxy (nginx) to expose it on port 80/443.
 
 <div align="center">
 
-Built with ❤️ by **[Asif Nawaz](https://github.com/asifnawaz23)**
+Built with ❤️ by **[Muhammad Asif Nawaz](https://github.com/asifnawaz23)**
 
 </div>
